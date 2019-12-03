@@ -1,6 +1,5 @@
 #import "SegmentCordovaPlugin.h"
-
-#import <Segment-Firebase/SEGFirebaseIntegrationFactory.h>
+#import "SEGFirebaseIntegrationFactory.h"
 
 @implementation SegmentCordovaPlugin
 
