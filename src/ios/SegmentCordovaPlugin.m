@@ -1,5 +1,7 @@
 #import "SegmentCordovaPlugin.h"
 
+#import <Segment-Firebase/SEGFirebaseIntegrationFactory.h>
+
 @implementation SegmentCordovaPlugin
 
 - (void)pluginInitialize {
@@ -73,6 +75,8 @@
           configuration.launchOptions =
               [configOptions objectForKey:@"defaultOptions"];
         }
+
+        [configuration use:[SEGFirebaseIntegrationFactory instance]];
       }
     }
 

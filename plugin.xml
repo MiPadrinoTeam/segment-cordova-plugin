@@ -43,6 +43,7 @@
             <config></config>
             <pods use-frameworks="true">
                 <pod name="Analytics" spec="~> 3.7.0" />
+                <pod name="Segment-Firebase" spec="~> 2.4.1" />
             </pods>
         </podspec>
 
