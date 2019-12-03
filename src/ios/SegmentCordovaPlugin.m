@@ -1,5 +1,4 @@
 #import "SegmentCordovaPlugin.h"
-#import "SEGFirebaseIntegrationFactory.h"
 
 @implementation SegmentCordovaPlugin
 
