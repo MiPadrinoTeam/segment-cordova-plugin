@@ -40,7 +40,19 @@
         <header-file src="src/ios/SegmentCordovaPlugin.h" target-dir="SegmentCordovaPlugin"/>
         <source-file src="src/ios/SegmentCordovaPlugin.m" target-dir="SegmentCordovaPlugin"/>
 
-        <framework src="Analytics" type="podspec" spec="~> 3.0"/>
-        <framework src="Segment-Mixpanel" type="podspec" spec="~> 1.3.0" />
+        <!-- <framework src="Analytics" type="podspec" spec="~> 3.0"/>
+        <framework src="Segment-Mixpanel" type="podspec" spec="~> 1.3.0" /> -->
+
+        <podspec>
+        <!-- <config>
+            <source url="https://github.com/brightcove/BrightcoveSpecs.git" />
+            <source url="https://github.com/CocoaPods/Specs.git"/>
+        </config> -->
+            <pods use-frameworks="true">
+                <pod name="Analytics" spec="~> 3.0" />
+                <pod name="Segment-Mixpanel" spec="~> 1.3.0" />
+            </pods>
+        </podspec>
+
     </platform>
 </plugin>
