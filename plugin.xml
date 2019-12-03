@@ -27,7 +27,6 @@
         <source-file src="src/android/SegmentCordovaPlugin.java" target-dir="src/com/segment/cordova/plugin" />
 
         <framework src="com.segment.analytics.android:analytics:4.3.0"/>
-        <framework src="com.segment.analytics.android.integrations:mixpanel:2.0.+"/>
     </platform>
 
     <platform name="ios">
@@ -43,11 +42,9 @@
         <podspec>
             <config>
                 <source url="https://github.com/segmentio/analytics-ios.git" />
-                <source url="https://github.com/segment-integrations/analytics-ios-integration-mixpanel.git"/>
             </config>
             <pods use-frameworks="true">
                 <pod name="Analytics" spec="~> 3.7.0" />
-                <pod name="Segment-Mixpanel" spec="~> 1.4.0" />
             </pods>
         </podspec>
 
