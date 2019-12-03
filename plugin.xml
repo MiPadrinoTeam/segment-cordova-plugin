@@ -40,9 +40,6 @@
         <source-file src="src/ios/SegmentCordovaPlugin.m" target-dir="SegmentCordovaPlugin"/>
 
         <podspec>
-            <config>
-                <source url="https://github.com/segmentio/analytics-ios.git" />
-            </config>
             <pods use-frameworks="true">
                 <pod name="Analytics" spec="~> 3.7.0" />
             </pods>
