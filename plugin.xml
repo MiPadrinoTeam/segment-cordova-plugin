@@ -40,7 +40,9 @@
         <source-file src="src/ios/SegmentCordovaPlugin.m" target-dir="SegmentCordovaPlugin"/>
 
         <podspec>
-            <config></config>
+            <config>
+                <source url="https://github.com/CocoaPods/Specs.git"/>
+            </config>
             <pods use-frameworks="true">
                 <pod name="Analytics" spec="~> 3.7.0" />
                 <pod name="Segment-Firebase" spec="~> 2.4.1" />
