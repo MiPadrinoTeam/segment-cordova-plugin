@@ -44,10 +44,10 @@
         <framework src="Segment-Mixpanel" type="podspec" spec="~> 1.3.0" /> -->
 
         <podspec>
-        <!-- <config>
-            <source url="https://github.com/brightcove/BrightcoveSpecs.git" />
-            <source url="https://github.com/CocoaPods/Specs.git"/>
-        </config> -->
+            <config>
+                <source url="https://github.com/segmentio/analytics-ios.git" />
+                <source url="https://github.com/segment-integrations/analytics-ios-integration-mixpanel.git"/>
+            </config>
             <pods use-frameworks="true">
                 <pod name="Analytics" spec="~> 3.0" />
                 <pod name="Segment-Mixpanel" spec="~> 1.3.0" />
