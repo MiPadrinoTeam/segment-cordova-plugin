@@ -18,7 +18,7 @@
 
   if (key != nil && [key length] > 0) {
     configuration = [SEGAnalyticsConfiguration configurationWithWriteKey:key];
-    [configuration use:[SEGFirebaseIntegrationFactory instance]];
+
     if ([command.arguments count] > 1) {
       configOptions = [command.arguments objectAtIndex:1];
 

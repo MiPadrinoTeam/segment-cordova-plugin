@@ -1,7 +1,6 @@
 #import <Analytics/SEGAnalytics.h>
 #import <Cordova/CDV.h>
 #import <Foundation/Foundation.h>
-#import <Segment-Firebase/SEGFirebaseIntegrationFactory.h>
 
 @interface SegmentCordovaPlugin : CDVPlugin {
   // Member variables go here.

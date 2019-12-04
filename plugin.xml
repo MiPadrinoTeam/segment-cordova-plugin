@@ -38,16 +38,12 @@
 
         <header-file src="src/ios/SegmentCordovaPlugin.h" target-dir="SegmentCordovaPlugin"/>
         <source-file src="src/ios/SegmentCordovaPlugin.m" target-dir="SegmentCordovaPlugin"/>
-
-        <!-- <framework src="Analytics" type="podspec" spec="~> 3.7.0"/>
-        <framework src="Segment-Firebase" type="podspec" spec="~> 2.4.1" /> -->
         <podspec>
             <config>
                 <source url="https://github.com/CocoaPods/Specs.git"/>
             </config>
             <pods use-frameworks="false">
                 <pod name="Analytics" spec="~> 3.7.0" />
-                <pod name="Segment-Firebase" spec="~> 2.4.1" />
             </pods>
         </podspec>
 
