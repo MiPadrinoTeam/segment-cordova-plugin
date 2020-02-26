@@ -1,7 +1,6 @@
 #import <Analytics/SEGAnalytics.h>
 #import <Cordova/CDV.h>
 #import <Foundation/Foundation.h>
-#import "SEGUrbanAirshipIntegrationFactory.h"
 
 @interface SegmentCordovaPlugin : CDVPlugin
 {
