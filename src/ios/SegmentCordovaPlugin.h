@@ -2,7 +2,8 @@
 #import <Cordova/CDV.h>
 #import <Foundation/Foundation.h>
 
-@interface SegmentCordovaPlugin : CDVPlugin {
+@interface SegmentCordovaPlugin : CDVPlugin
+{
   // Member variables go here.
 }
 

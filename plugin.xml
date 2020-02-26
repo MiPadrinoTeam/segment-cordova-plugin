@@ -27,6 +27,9 @@
         <source-file src="src/android/SegmentCordovaPlugin.java" target-dir="src/com/segment/cordova/plugin" />
 
         <framework src="com.segment.analytics.android:analytics:4.3.0"/>
+        <!-- <framework src="com.segment.analytics.android.integrations:mixpanel:2.0.+"/> -->
+        <!-- <framework src="com.appsflyer:segment-android-integration:1.+" />
+        <framework src="com.android.installreferrer:installreferrer:1.0" /> -->
     </platform>
 
     <platform name="ios">
@@ -44,6 +47,9 @@
             </config>
             <pods use-frameworks="false">
                 <pod name="Analytics" spec="~> 3.7.0" />
+                <pod name="Segment-UrbanAirship" spec="~> 2.1.0" />
+                <!-- <pod name="segment-appsflyer-ios" spec="5.1.2" /> -->
+                <!-- <pod name="Segment-Mixpanel" spec="5.1.1" /> -->
             </pods>
         </podspec>
 

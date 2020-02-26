@@ -1,5 +1,7 @@
 #import "SegmentCordovaPlugin.h"
 
+#import <Segment-UrbanAirship/SEGUrbanAirshipIntegrationFactory.h>
+
 @implementation SegmentCordovaPlugin
 
 - (void)pluginInitialize {
@@ -73,6 +75,16 @@
           configuration.launchOptions =
               [configOptions objectForKey:@"defaultOptions"];
         }
+
+        if ([configOptions objectForKey:@"enableAirshipIntegration"] != nil) {
+          [config use:[SEGUrbanAirshipIntegrationFactory instance]];
+        }
+
+        // if ([configOptions objectForKey:@"enableAppsFlyerIntegration"] !=
+        // nil)
+        // {
+        //   [configuration use:[SEGAppsFlyerIntegrationFactory instance]];
+        // }
       }
     }
 
