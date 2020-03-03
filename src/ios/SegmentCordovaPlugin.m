@@ -1,5 +1,4 @@
 #import "SegmentCordovaPlugin.h"
-#import "SEGAppsFlyerIntegrationFactory.h"
 
 @implementation SegmentCordovaPlugin
 
@@ -31,72 +30,70 @@
               [[options objectForKey:@"shouldUseLocationServices"] boolValue];
         }
         // ios only
-        // if ([options objectForKey:@"enableAdvertisingTracking"] != nil)
-        // {
-        configuration.enableAdvertisingTracking =
-            [[options objectForKey:@"enableAdvertisingTracking"] boolValue];
-      }
-      // ios only
-      if ([options objectForKey:@"flushQueueSize"] != nil) {
-        configuration.flushAt =
-            [[options objectForKey:@"flushQueueSize"] unsignedIntegerValue];
-      }
+        if ([options objectForKey:@"enableAdvertisingTracking"] != nil) {
+          configuration.enableAdvertisingTracking =
+              [[options objectForKey:@"enableAdvertisingTracking"] boolValue];
+        }
+        // ios only
+        if ([options objectForKey:@"flushQueueSize"] != nil) {
+          configuration.flushAt =
+              [[options objectForKey:@"flushQueueSize"] unsignedIntegerValue];
+        }
 
-      if ([options objectForKey:@"trackApplicationLifecycleEvents"] != nil) {
-        configuration.trackApplicationLifecycleEvents = [[options
-            objectForKey:@"trackApplicationLifecycleEvents"] boolValue];
-      }
-      // ios only
-      if ([options objectForKey:@"shouldUseBluetooth"] != nil) {
-        configuration.shouldUseBluetooth =
-            [[options objectForKey:@"shouldUseBluetooth"] boolValue];
-      }
-      if ([options objectForKey:@"recordScreenViews"] != nil) {
-        configuration.recordScreenViews =
-            [[options objectForKey:@"recordScreenViews"] boolValue];
-      }
-      // ios only
-      if ([options objectForKey:@"trackInAppPurchases"] != nil) {
-        configuration.trackInAppPurchases =
-            [[options objectForKey:@"trackInAppPurchases"] boolValue];
-      }
-      // ios only
-      if ([options objectForKey:@"trackPushNotifications"] != nil) {
-        configuration.trackPushNotifications =
-            [[options objectForKey:@"trackPushNotifications"] boolValue];
-      }
+        if ([options objectForKey:@"trackApplicationLifecycleEvents"] != nil) {
+          configuration.trackApplicationLifecycleEvents = [[options
+              objectForKey:@"trackApplicationLifecycleEvents"] boolValue];
+        }
+        // ios only
+        if ([options objectForKey:@"shouldUseBluetooth"] != nil) {
+          configuration.shouldUseBluetooth =
+              [[options objectForKey:@"shouldUseBluetooth"] boolValue];
+        }
+        if ([options objectForKey:@"recordScreenViews"] != nil) {
+          configuration.recordScreenViews =
+              [[options objectForKey:@"recordScreenViews"] boolValue];
+        }
+        // ios only
+        if ([options objectForKey:@"trackInAppPurchases"] != nil) {
+          configuration.trackInAppPurchases =
+              [[options objectForKey:@"trackInAppPurchases"] boolValue];
+        }
+        // ios only
+        if ([options objectForKey:@"trackPushNotifications"] != nil) {
+          configuration.trackPushNotifications =
+              [[options objectForKey:@"trackPushNotifications"] boolValue];
+        }
 
-      if ([options objectForKey:@"trackAttributionInformation"] != nil) {
-        configuration.trackAttributionData =
-            [[options objectForKey:@"trackAttributionInformation"] boolValue];
-      }
+        if ([options objectForKey:@"trackAttributionInformation"] != nil) {
+          configuration.trackAttributionData =
+              [[options objectForKey:@"trackAttributionInformation"] boolValue];
+        }
 
-      if ([options objectForKey:@"trackDeepLinks"] != nil) {
-        configuration.trackAttributionData =
-            [[options objectForKey:@"trackDeepLinks"] boolValue];
-      }
+        // if ([options objectForKey:@"trackDeepLinks"] != nil) {
+        //   configuration.trackAttributionData =
+        //       [[options objectForKey:@"trackDeepLinks"] boolValue];
+        // }
 
-      if ([options objectForKey:@"defaultOptions"] != nil) {
-        configuration.launchOptions = [options objectForKey:@"defaultOptions"];
-      }
+        if ([options objectForKey:@"defaultOptions"] != nil) {
+          configuration.launchOptions =
+              [options objectForKey:@"defaultOptions"];
+        }
 
-      // if ([options objectForKey:@"enableAirshipIntegration"] !=
-      //     nil) {
-      //   [configuration use:[SEGUrbanAirshipIntegrationFactory
-      //   instance]];
-      // }
+        // if ([options objectForKey:@"enableAirshipIntegration"] !=
+        //     nil) {
+        //   [configuration use:[SEGUrbanAirshipIntegrationFactory
+        //   instance]];
+        // }
 
-      if ([options objectForKey:@"enableAppsFlyerIntegration"] != nil) {
-        [configuration use:[SEGAppsFlyerIntegrationFactory instance]];
+        // if ([options objectForKey:@"enableAppsFlyerIntegration"] != nil) {
+        //   [configuration use:[SEGAppsFlyerIntegrationFactory instance]];
+        // }
       }
     }
     [SEGAnalytics debug:YES];
     [SEGAnalytics setupWithConfiguration:configuration];
     pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
-  }
-
-  // }
-  else {
+  } else {
     pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR
                                      messageAsString:@"Key is required."];
   }
