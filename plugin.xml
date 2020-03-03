@@ -7,7 +7,6 @@
     <name>SegmentCordovaPlugin</name>
     <license>MIT License</license>
     <description>Cordova plugin for the Segment SDK</description>
-    <author>James Yoon</author>
 
     <access origin="api.segment.io" />
 
@@ -42,8 +41,9 @@
             <config>
                 <source url="https://github.com/CocoaPods/Specs.git"/>
             </config>
-            <pods use-frameworks="false">
+            <pods use-frameworks="true">
                 <pod name="Analytics" spec="~> 3.7.0" />
+                <pod name="segment-appsflyer-ios" spec="~> 5.1.1" />
             </pods>
         </podspec>
 
