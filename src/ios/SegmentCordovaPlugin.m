@@ -1,4 +1,5 @@
 #import "SegmentCordovaPlugin.h"
+#import "SEGAppsFlyerIntegrationFactory.h"
 
 @implementation SegmentCordovaPlugin
 
