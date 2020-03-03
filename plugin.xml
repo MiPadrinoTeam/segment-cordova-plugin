@@ -7,6 +7,7 @@
     <name>SegmentCordovaPlugin</name>
     <license>MIT License</license>
     <description>Cordova plugin for the Segment SDK</description>
+    <author>James Yoon</author>
 
     <access origin="api.segment.io" />
 
@@ -42,7 +43,7 @@
                 <source url="https://github.com/CocoaPods/Specs.git"/>
             </config>
             <pods use-frameworks="false">
-                <pod name="Analytics" spec="3.7.1" />
+                <pod name="Analytics" spec="~> 3.7.0" />
             </pods>
         </podspec>
 
