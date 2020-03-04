@@ -38,20 +38,20 @@
         <header-file src="src/ios/SegmentCordovaPlugin.h" target-dir="SegmentCordovaPlugin"/>
         <source-file src="src/ios/SegmentCordovaPlugin.m" target-dir="SegmentCordovaPlugin"/>
 
-        <!-- AppsFlyer -->
-        <header-file src="src/ios/appsflyer/SEGAppsFlyerIntegration.h" target-dir="SegmentCordovaPlugin"/>
+
+        <!-- <header-file src="src/ios/appsflyer/SEGAppsFlyerIntegration.h" target-dir="SegmentCordovaPlugin"/>
         <source-file src="src/ios/appsflyer/SEGAppsFlyerIntegration.m" target-dir="SegmentCordovaPlugin"/>
         <header-file src="src/ios/appsflyer/SEGAppsFlyerIntegrationFactory.h" target-dir="SegmentCordovaPlugin"/>
         <source-file src="src/ios/appsflyer/SEGAppsFlyerIntegrationFactory.m" target-dir="SegmentCordovaPlugin"/>
         <header-file src="src/ios/appsflyer/SegmentAppsFlyeriOS.h" target-dir="SegmentCordovaPlugin"/>
 
-        <!-- Urban Airship -->
+
         <header-file src="src/ios/airship/SEGUrbanAirshipAutopilot.h" target-dir="SegmentCordovaPlugin"/>
         <source-file src="src/ios/airship/SEGUrbanAirshipAutopilot.m" target-dir="SegmentCordovaPlugin"/>
         <header-file src="src/ios/airship/SEGUrbanAirshipIntegration.h" target-dir="SegmentCordovaPlugin"/>
         <source-file src="src/ios/airship/SEGUrbanAirshipIntegration.m" target-dir="SegmentCordovaPlugin"/>
         <header-file src="src/ios/airship/SEGUrbanAirshipIntegrationFactory.h" target-dir="SegmentCordovaPlugin"/>
-        <source-file src="src/ios/airship/SEGUrbanAirshipIntegrationFactory.m" target-dir="SegmentCordovaPlugin"/>
+        <source-file src="src/ios/airship/SEGUrbanAirshipIntegrationFactory.m" target-dir="SegmentCordovaPlugin"/> -->
 
         <podspec>
             <config>

@@ -10,7 +10,6 @@
   SEGAnalyticsConfiguration *configuration = nil;
   NSString *key = nil;
   NSDictionary *configOptions = nil;
-  NSDictionary *options = nil;
 
   if ([command.arguments count] > 0) {
     key = [command.arguments objectAtIndex:0];
@@ -73,20 +72,20 @@
           configuration.launchOptions =
               [configOptions objectForKey:@"defaultOptions"];
         }
-
-        // if ([options objectForKey:@"enableAppsFlyerIntegration"] != nil) {
-        // }
-
-        // if ([options objectForKey:@"enableAirshipIntegration"] != nil) {
-        // }
       }
     }
 
-    [configuration use:[SEGAppsFlyerIntegrationFactory instance]];
-    [configuration use:[SEGUrbanAirshipIntegrationFactory instance]];
+    // [configuration use:[SEGAppsFlyerIntegrationFactory instance]];
+    // [configuration use:[SEGUrbanAirshipIntegrationFactory instance]];
 
     [SEGAnalytics setupWithConfiguration:configuration];
     pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+
+    [[NSNotificationCenter defaultCenter]
+        addObserver:self
+           selector:@selector(airshipReady)
+               name:@"io.segment.analytics.integration.did.start"
+             object:[SEGUrbanAirshipIntegrationFactory instance].key];
   } else {
     pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR
                                      messageAsString:@"Key is required."];
