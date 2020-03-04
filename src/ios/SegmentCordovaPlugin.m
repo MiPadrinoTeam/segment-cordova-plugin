@@ -7,29 +7,75 @@
 
 - (void)startWithConfiguration:(CDVInvokedUrlCommand *)command {
   CDVPluginResult *pluginResult = nil;
+  SEGAnalyticsConfiguration *configuration = nil;
   NSString *key = nil;
+  NSDictionary *configOptions = nil;
 
   if ([command.arguments count] > 0) {
     key = [command.arguments objectAtIndex:0];
   }
 
   if (key != nil && [key length] > 0) {
-    SEGAnalyticsConfiguration *config =
-        [SEGAnalyticsConfiguration configurationWithWriteKey:key];
+    configuration = [SEGAnalyticsConfiguration configurationWithWriteKey:key];
 
-    [config use:[SEGAppsFlyerIntegrationFactory instance]];
-    [config use:[SEGUrbanAirshipIntegrationFactory instance]];
+    if ([command.arguments count] > 1) {
+      configOptions = [command.arguments objectAtIndex:1];
 
-    config.enableAdvertisingTracking = YES;
-    config.trackApplicationLifecycleEvents = YES;
-    config.trackDeepLinks = YES;
-    config.trackPushNotifications = YES;
-    config.trackAttributionData = YES;
+      // Set SEGAnalyticsConfiguration
+      // https://github.com/segmentio/analytics-ios/blob/master/Analytics/Classes/SEGAnalyticsConfiguration.h
+      if (![configOptions isEqual:[NSNull null]]) {
+        // ios only
+        if ([configOptions objectForKey:@"shouldUseLocationServices"] != nil) {
+          configuration.shouldUseLocationServices = [[configOptions
+              objectForKey:@"shouldUseLocationServices"] boolValue];
+        }
+        // ios only
+        if ([configOptions objectForKey:@"enableAdvertisingTracking"] != nil) {
+          configuration.enableAdvertisingTracking = [[configOptions
+              objectForKey:@"enableAdvertisingTracking"] boolValue];
+        }
+        // ios only
+        if ([configOptions objectForKey:@"flushQueueSize"] != nil) {
+          configuration.flushAt = [[configOptions
+              objectForKey:@"flushQueueSize"] unsignedIntegerValue];
+        }
+        if ([configOptions objectForKey:@"trackApplicationLifecycleEvents"] !=
+            nil) {
+          configuration.trackApplicationLifecycleEvents = [[configOptions
+              objectForKey:@"trackApplicationLifecycleEvents"] boolValue];
+        }
+        // ios only
+        if ([configOptions objectForKey:@"shouldUseBluetooth"] != nil) {
+          configuration.shouldUseBluetooth =
+              [[configOptions objectForKey:@"shouldUseBluetooth"] boolValue];
+        }
+        if ([configOptions objectForKey:@"recordScreenViews"] != nil) {
+          configuration.recordScreenViews =
+              [[configOptions objectForKey:@"recordScreenViews"] boolValue];
+        }
+        // ios only
+        if ([configOptions objectForKey:@"trackInAppPurchases"] != nil) {
+          configuration.trackInAppPurchases =
+              [[configOptions objectForKey:@"trackInAppPurchases"] boolValue];
+        }
+        // ios only
+        if ([configOptions objectForKey:@"trackPushNotifications"] != nil) {
+          configuration.trackPushNotifications = [[configOptions
+              objectForKey:@"trackPushNotifications"] boolValue];
+        }
+        if ([configOptions objectForKey:@"trackAttributionInformation"] !=
+            nil) {
+          configuration.trackAttributionData = [[configOptions
+              objectForKey:@"trackAttributionInformation"] boolValue];
+        }
+        if ([configOptions objectForKey:@"defaultOptions"] != nil) {
+          configuration.launchOptions =
+              [configOptions objectForKey:@"defaultOptions"];
+        }
+      }
+    }
 
-    [SEGAnalytics debug:YES];
-
-    [SEGAnalytics setupWithConfiguration:config];
-
+    [SEGAnalytics setupWithConfiguration:configuration];
     pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
   } else {
     pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR
