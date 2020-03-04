@@ -73,8 +73,17 @@
           configuration.launchOptions =
               [configOptions objectForKey:@"defaultOptions"];
         }
+
+        // if ([options objectForKey:@"enableAppsFlyerIntegration"] != nil) {
+        // }
+
+        // if ([options objectForKey:@"enableAirshipIntegration"] != nil) {
+        // }
       }
     }
+
+    [configuration use:[SEGAppsFlyerIntegrationFactory instance]];
+    [configuration use:[SEGUrbanAirshipIntegrationFactory instance]];
 
     [SEGAnalytics setupWithConfiguration:configuration];
     pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
