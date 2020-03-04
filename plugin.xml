@@ -7,7 +7,6 @@
     <name>SegmentCordovaPlugin</name>
     <license>MIT License</license>
     <description>Cordova plugin for the Segment SDK</description>
-    <author>James Yoon</author>
 
     <access origin="api.segment.io" />
 
@@ -38,6 +37,22 @@
 
         <header-file src="src/ios/SegmentCordovaPlugin.h" target-dir="SegmentCordovaPlugin"/>
         <source-file src="src/ios/SegmentCordovaPlugin.m" target-dir="SegmentCordovaPlugin"/>
+
+        <!-- AppsFlyer -->
+        <header-file src="src/ios/SEGAppsFlyerIntegration.h" target-dir="SegmentCordovaPlugin"/>
+        <source-file src="src/ios/SEGAppsFlyerIntegration.m" target-dir="SegmentCordovaPlugin"/>
+        <header-file src="src/ios/SEGAppsFlyerIntegrationFactory.h" target-dir="SegmentCordovaPlugin"/>
+        <source-file src="src/ios/SEGAppsFlyerIntegrationFactory.m" target-dir="SegmentCordovaPlugin"/>
+        <header-file src="src/ios/SegmentAppsFlyeriOS.h" target-dir="SegmentCordovaPlugin"/>
+
+        <!-- Urban Airship -->
+        <header-file src="src/ios/SEGUrbanAirshipAutopilot.h" target-dir="SegmentCordovaPlugin"/>
+        <source-file src="src/ios/SEGUrbanAirshipAutopilot.m" target-dir="SegmentCordovaPlugin"/>
+        <header-file src="src/ios/SEGUrbanAirshipIntegration.h" target-dir="SegmentCordovaPlugin"/>
+        <source-file src="src/ios/SEGUrbanAirshipIntegration.m" target-dir="SegmentCordovaPlugin"/>
+        <header-file src="src/ios/SEGUrbanAirshipIntegrationFactory.h" target-dir="SegmentCordovaPlugin"/>
+        <source-file src="src/ios/SEGUrbanAirshipIntegrationFactory.m" target-dir="SegmentCordovaPlugin"/>
+
         <podspec>
             <config>
                 <source url="https://github.com/CocoaPods/Specs.git"/>
@@ -49,3 +64,4 @@
 
     </platform>
 </plugin>
+
