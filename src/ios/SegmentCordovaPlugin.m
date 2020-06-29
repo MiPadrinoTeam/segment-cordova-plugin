@@ -1,4 +1,5 @@
 #import "SegmentCordovaPlugin.h"
+#import "SEGAmplitudeIntegrationFactory.h"
 
 @implementation SegmentCordovaPlugin
 
@@ -75,6 +76,7 @@
       }
     }
 
+    [configuration use:[SEGAmplitudeIntegrationFactory instance]];
     [SEGAnalytics setupWithConfiguration:configuration];
     pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
   } else {

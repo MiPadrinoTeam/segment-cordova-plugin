@@ -2,6 +2,7 @@ package com.segment.cordova.plugin;
 
 import android.util.Log;
 import com.segment.analytics.Analytics;
+import com.segment.analytics.android.integrations.amplitude.AmplitudeIntegration;
 import com.segment.analytics.Options;
 import com.segment.analytics.Properties;
 import com.segment.analytics.Traits;
@@ -22,8 +23,7 @@ import org.json.JSONObject;
 
 public class SegmentCordovaPlugin extends CordovaPlugin {
 
-  private static final String ACTION_WITH_CONFIGURATION =
-      "startWithConfiguration";
+  private static final String ACTION_WITH_CONFIGURATION = "startWithConfiguration";
   private static final String ACTION_IDENTIFY = "identify";
   private static final String ACTION_TRACK = "track";
   private static final String ACTION_SCREEN = "screen";
@@ -32,18 +32,15 @@ public class SegmentCordovaPlugin extends CordovaPlugin {
   private static final String ACTION_GET_ANONYMOUS_ID = "getAnonymousId";
   private static final String ACTION_RESET = "reset";
 
-  private static DateFormat formatter =
-      new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+  private static DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
 
   @Override
-  public boolean execute(String action, JSONArray args,
-                         CallbackContext callbackContext) throws JSONException {
+  public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
     int length = args.length();
 
     if (length > 0) {
       if (ACTION_WITH_CONFIGURATION.equals(action) && length > 1) {
-        this.startWithConfiguration(args.getString(0), args.getJSONObject(1),
-                                    callbackContext);
+        this.startWithConfiguration(args.getString(0), args.getJSONObject(1), callbackContext);
         return true;
       } else if (ACTION_IDENTIFY.equals(action)) {
         this.identify(args.getJSONObject(0), callbackContext);
@@ -72,16 +69,15 @@ public class SegmentCordovaPlugin extends CordovaPlugin {
     return false;
   }
 
-  private void startWithConfiguration(String id, JSONObject obj,
-                                      CallbackContext callbackContext) {
+  private void startWithConfiguration(String id, JSONObject obj, CallbackContext callbackContext) {
     Analytics.Builder builder;
     String logLevel;
     Options options;
 
     try {
       if (null != id && id.length() > 0) {
-        builder = new Analytics.Builder(
-            cordova.getActivity().getApplicationContext(), id);
+        builder = new Analytics.Builder(cordova.getActivity().getApplicationContext(), id)
+            .use(AmplitudeIntegration.FACTORY);
 
         if (obj != null) {
           if (obj.has("trackApplicationLifecycleEvents")) {
@@ -109,8 +105,7 @@ public class SegmentCordovaPlugin extends CordovaPlugin {
           }
           // android only and flushInterval value should be seconds base.
           if (obj.has("flushInterval")) {
-            builder.flushInterval(obj.optInt("flushInterval"),
-                                  TimeUnit.SECONDS);
+            builder.flushInterval(obj.optInt("flushInterval"), TimeUnit.SECONDS);
           }
           // android only
           if (obj.has("tag")) {
@@ -162,8 +157,7 @@ public class SegmentCordovaPlugin extends CordovaPlugin {
         traits = toTraits(obj.optJSONObject("traits"));
         options = toOptions(obj.optJSONObject("options"));
 
-        Analytics.with(cordova.getActivity().getApplicationContext())
-            .identify(userId, traits, options);
+        Analytics.with(cordova.getActivity().getApplicationContext()).identify(userId, traits, options);
 
         callbackContext.success("track identify for " + userId);
       } else {
@@ -187,8 +181,7 @@ public class SegmentCordovaPlugin extends CordovaPlugin {
           properties = toProperties(obj.optJSONObject("properties"));
           options = toOptions(obj.optJSONObject("options"));
 
-          Analytics.with(cordova.getActivity().getApplicationContext())
-              .track(event, properties, options);
+          Analytics.with(cordova.getActivity().getApplicationContext()).track(event, properties, options);
 
           callbackContext.success("track event for " + event);
         } else {
@@ -215,8 +208,7 @@ public class SegmentCordovaPlugin extends CordovaPlugin {
         properties = toProperties(obj.optJSONObject("properties"));
         options = toOptions(obj.optJSONObject("options"));
 
-        Analytics.with(cordova.getActivity().getApplicationContext())
-            .screen(category, name, properties, options);
+        Analytics.with(cordova.getActivity().getApplicationContext()).screen(category, name, properties, options);
 
         callbackContext.success("track screen for " + name);
       } else {
@@ -238,8 +230,7 @@ public class SegmentCordovaPlugin extends CordovaPlugin {
         userId = obj.optString("userId");
         groupId = obj.optString("groupId");
 
-        if (null != userId && userId.length() > 0 && null != groupId &&
-            groupId.length() > 0) {
+        if (null != userId && userId.length() > 0 && null != groupId && groupId.length() > 0) {
           traits = toTraits(obj.optJSONObject("traits"));
           options = toOptions(obj.optJSONObject("options"));
 
@@ -247,8 +238,7 @@ public class SegmentCordovaPlugin extends CordovaPlugin {
           // (https://segment.com/docs/sources/mobile/android/#group) However,
           // the userId is not used for actual API.
           // https://github.com/segmentio/analytics-android/blob/master/analytics/src/main/java/com/segment/analytics/Analytics.java#L531
-          Analytics.with(cordova.getActivity().getApplicationContext())
-              .group(groupId, traits, options);
+          Analytics.with(cordova.getActivity().getApplicationContext()).group(groupId, traits, options);
 
           callbackContext.success("group " + groupId + " for user " + userId);
         } else {
@@ -274,8 +264,7 @@ public class SegmentCordovaPlugin extends CordovaPlugin {
         if (null != newId && newId.length() > 0) {
           options = toOptions(obj.optJSONObject("options"));
 
-          Analytics.with(cordova.getActivity().getApplicationContext())
-              .alias(newId, options);
+          Analytics.with(cordova.getActivity().getApplicationContext()).alias(newId, options);
 
           callbackContext.success("alias for " + newId);
         } else {
@@ -293,11 +282,8 @@ public class SegmentCordovaPlugin extends CordovaPlugin {
     String anonymousId;
 
     try {
-      anonymousId =
-          Analytics.with(cordova.getActivity().getApplicationContext())
-              .getAnalyticsContext()
-              .traits()
-              .anonymousId();
+      anonymousId = Analytics.with(cordova.getActivity().getApplicationContext()).getAnalyticsContext().traits()
+          .anonymousId();
 
       callbackContext.success(anonymousId);
 
@@ -317,8 +303,8 @@ public class SegmentCordovaPlugin extends CordovaPlugin {
   }
 
   /**
-   * @see <a
-   *     href="https://github.com/segmentio/analytics-android/blob/master/analytics/src/main/java/com/segment/analytics/Traits.java">Traits</a>
+   * @see <a href=
+   *      "https://github.com/segmentio/analytics-android/blob/master/analytics/src/main/java/com/segment/analytics/Traits.java">Traits</a>
    */
   private Traits toTraits(JSONObject traitsObj) {
     Traits traits = null;
@@ -460,7 +446,7 @@ public class SegmentCordovaPlugin extends CordovaPlugin {
 
         // Iterate traits to find non-predefined traits
         while (traitList.hasNext()) {
-          key = (String)traitList.next();
+          key = (String) traitList.next();
 
           if (!traits.containsKey(key)) {
             obj = traitsObj.get(key);
@@ -487,8 +473,8 @@ public class SegmentCordovaPlugin extends CordovaPlugin {
   }
 
   /**
-   * @see <a
-   *     href="https://github.com/segmentio/analytics-android/blob/master/analytics/src/main/java/com/segment/analytics/Properties.java">Properties</a>
+   * @see <a href=
+   *      "https://github.com/segmentio/analytics-android/blob/master/analytics/src/main/java/com/segment/analytics/Properties.java">Properties</a>
    */
   private Properties toProperties(JSONObject propertiesObj) {
     Properties properties = null;
@@ -646,15 +632,14 @@ public class SegmentCordovaPlugin extends CordovaPlugin {
             products.add(product);
           }
 
-          properties.putProducts(
-              products.toArray(new Properties.Product[products.size()]));
+          properties.putProducts(products.toArray(new Properties.Product[products.size()]));
         }
 
         propertyList = propertiesObj.keys();
 
         // Iterate properties to find non-predefined properties
         while (propertyList.hasNext()) {
-          key = (String)propertyList.next();
+          key = (String) propertyList.next();
 
           if (!properties.containsKey(key)) {
             obj = propertiesObj.get(key);
@@ -682,8 +667,8 @@ public class SegmentCordovaPlugin extends CordovaPlugin {
   }
 
   /**
-   * @see <a
-   *     href="https://github.com/segmentio/analytics-android/blob/master/analytics/src/main/java/com/segment/analytics/Options.java">Options</a>
+   * @see <a href=
+   *      "https://github.com/segmentio/analytics-android/blob/master/analytics/src/main/java/com/segment/analytics/Options.java">Options</a>
    */
   private Options toOptions(JSONObject optionsObj) {
     Options options = null;
@@ -704,7 +689,7 @@ public class SegmentCordovaPlugin extends CordovaPlugin {
         keys = optionsObj.keys();
 
         while (keys.hasNext()) {
-          key = (String)keys.next();
+          key = (String) keys.next();
           value = optionsObj.get(key);
           if (value instanceof JSONObject) {
 
@@ -716,10 +701,8 @@ public class SegmentCordovaPlugin extends CordovaPlugin {
 
             while (integrationInputsItr.hasNext()) {
               integrationOptionKey = integrationInputsItr.next();
-              integrationOptionValue =
-                  integrationInputs.get(integrationOptionKey);
-              integrationOptions.put(integrationOptionKey,
-                                     integrationOptionValue);
+              integrationOptionValue = integrationInputs.get(integrationOptionKey);
+              integrationOptions.put(integrationOptionKey, integrationOptionValue);
             }
             options.setIntegrationOptions(key, integrationOptions);
           } else if (value instanceof Boolean) {
