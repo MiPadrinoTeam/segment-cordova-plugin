@@ -45,7 +45,7 @@
             </config>
             <pods use-frameworks="false">
                 <pod name="Analytics" spec="~3.7.1" />
-                <pod name="Segment-Amplitude" />
+                <!-- <pod name="Segment-Amplitude" spec="~5.1.0" /> -->
             </pods>
         </podspec>
 
