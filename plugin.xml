@@ -43,7 +43,7 @@
             <config>
                 <source url="https://github.com/CocoaPods/Specs.git"/>
             </config>
-            <pods use-frameworks="false">
+            <pods use-frameworks="true">
                 <pod name="Analytics" spec="~> 3.7.1"/>
                 <pod name="Segment-Amplitude" spec="~> 3.0.1" />
             </pods>
