@@ -26,6 +26,8 @@
         <source-file src="src/android/SegmentCordovaPlugin.java" target-dir="src/com/segment/cordova/plugin" />
 
         <framework src="com.segment.analytics.android:analytics:4.3.0"/>
+        <framework src="com.amplitude:android-sdk:2.25.2" />
+        <framework src="com.squareup.okhttp3:okhttp:4.2.2" />
     </platform>
 
     <platform name="ios">
@@ -44,6 +46,7 @@
             </config>
             <pods use-frameworks="false">
                 <pod name="Analytics" spec="3.7.1" />
+                <pod name="Amplitude" spec="5.1.0" />
             </pods>
         </podspec>
 
