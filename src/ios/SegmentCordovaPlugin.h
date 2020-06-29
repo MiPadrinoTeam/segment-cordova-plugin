@@ -1,7 +1,7 @@
-#import <Analytics/SEGAnalytics.h>
-#import <Segment-Amplitude/SEGAmplitudeIntegrationFactory.h>
 #import <Cordova/CDV.h>
 #import <Foundation/Foundation.h>
+#import <Analytics/SEGAnalytics.h>
+#import <Segment_Amplitude/SEGAmplitudeIntegrationFactory.h>
 
 @interface SegmentCordovaPlugin : CDVPlugin
 {

@@ -1,6 +1,5 @@
 #import "SegmentCordovaPlugin.h"
 
-
 @implementation SegmentCordovaPlugin
 
 - (void)pluginInitialize {
