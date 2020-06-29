@@ -1,5 +1,5 @@
 #import "SegmentCordovaPlugin.h"
-#import "SEGAmplitudeIntegrationFactory.h"
+
 
 @implementation SegmentCordovaPlugin
 

@@ -1,4 +1,5 @@
 #import <Analytics/SEGAnalytics.h>
+#import <Segment-Amplitude/SEGAmplitudeIntegrationFactory.h>
 #import <Cordova/CDV.h>
 #import <Foundation/Foundation.h>
 
