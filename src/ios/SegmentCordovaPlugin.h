@@ -2,6 +2,7 @@
 #import <Foundation/Foundation.h>
 #import <Analytics/SEGAnalytics.h>
 #import <Segment_Amplitude/SEGAmplitudeIntegrationFactory.h>
+#import <Segment_Airship/SEGUrbanAirshipIntegrationFactory.h>
 
 @interface SegmentCordovaPlugin : CDVPlugin
 {
