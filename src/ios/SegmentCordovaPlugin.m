@@ -76,7 +76,7 @@
     }
 
     [configuration use:[SEGAmplitudeIntegrationFactory instance]];
-    [configuration use:[SEGUrbanAirshipIntegrationFactory instance]];
+    // [configuration use:[SEGUrbanAirshipIntegrationFactory instance]];
     [SEGAnalytics setupWithConfiguration:configuration];
     pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
   } else {
