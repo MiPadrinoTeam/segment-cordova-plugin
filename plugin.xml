@@ -1,8 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <plugin id="segment-cordova-plugin"
-	xmlns="http://apache.org/cordova/ns/plugins/1.0"
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	version="2.1.0" >
+    xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android" version="2.1.0">
 
     <name>SegmentCordovaPlugin</name>
     <license>MIT License</license>
@@ -20,8 +19,8 @@
                 <param name="android-package" value="com.segment.cordova.plugin.SegmentCordovaPlugin" />
             </feature>
         </config-file>
-        <config-file parent="/*" target="AndroidManifest.xml" >
-        	<uses-permission android:name="android.permission.INTERNET" />
+        <config-file parent="/*" target="AndroidManifest.xml">
+            <uses-permission android:name="android.permission.INTERNET" />
         </config-file>
         <source-file src="src/android/SegmentCordovaPlugin.java" target-dir="src/com/segment/cordova/plugin" />
 
@@ -44,8 +43,8 @@
                 <source url="https://github.com/CocoaPods/Specs.git"/>
             </config>
             <pods use-frameworks="true">
-                <pod name="Analytics" spec="~> 3.7.1"/>
-                <pod name="Segment-Amplitude" spec="~> 3.0.1" />
+                <pod name="Analytics" spec="~> 3.9.0"/>
+                <pod name="Segment-Amplitude" spec="~> 3.2.1" />
                 <!-- <pod name="Segment-UrbanAirship" spec="~> 2.1.0" /> -->
             </pods>
         </podspec>
