@@ -43,8 +43,8 @@
                 <source url="https://github.com/CocoaPods/Specs.git"/>
             </config>
             <pods use-frameworks="true">
-                <pod name="Analytics" spec="~> 3.9.0"/>
-                <pod name="Segment-Amplitude" spec="~> 3.2.1" />
+                <pod name="Analytics" spec="~> 3.7.1"/>
+                <pod name="Segment-Amplitude" spec="~> 3.0.1" />
                 <!-- <pod name="Segment-UrbanAirship" spec="~> 2.1.0" /> -->
             </pods>
         </podspec>
